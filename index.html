@@ -1,0 +1,1831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BLACK ANIME | Anime • Gaming • Community</title>
+
+<meta name="description"
+content="BLACK ANIME — Enter the dark side of anime and gaming.">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+:root{
+    --black:#020204;
+    --cyan:#00f7ff;
+    --pink:#ff00d4;
+    --purple:#8b00ff;
+    --blue:#0066ff;
+    --white:#fff;
+    --muted:#9b9ba8;
+}
+
+html{
+    background:#020204;
+}
+
+body{
+    background:#020204;
+    color:white;
+    font-family:Arial,Helvetica,sans-serif;
+    overflow-x:hidden;
+}
+
+/* =========================================
+   CINEMATIC INTRO
+========================================= */
+
+#intro{
+    position:fixed;
+    inset:0;
+    z-index:10000;
+    background:#000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    transition:
+        opacity 1.5s ease,
+        visibility 1.5s ease;
+}
+
+#intro.hide{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+.intro-glow{
+    position:absolute;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,247,255,.20),
+            rgba(255,0,212,.12),
+            transparent 70%
+        );
+
+    filter:blur(50px);
+    animation:introGlow 4s ease-in-out infinite;
+}
+
+@keyframes introGlow{
+
+    0%,100%{
+        transform:scale(.8);
+        opacity:.4;
+    }
+
+    50%{
+        transform:scale(1.3);
+        opacity:1;
+    }
+}
+
+.intro-logo{
+    width:min(500px,75vw);
+
+    opacity:0;
+    transform:
+        scale(.25)
+        rotate(-8deg);
+
+    filter:
+        blur(15px)
+        brightness(.2);
+
+    animation:introLogo 3.5s
+        cubic-bezier(.16,1,.3,1)
+        forwards;
+}
+
+@keyframes introLogo{
+
+    0%{
+        opacity:0;
+        transform:scale(.25) rotate(-8deg);
+        filter:blur(15px) brightness(.2);
+    }
+
+    55%{
+        opacity:1;
+        transform:scale(1.08) rotate(2deg);
+        filter:
+            blur(0)
+            brightness(1.3)
+            drop-shadow(0 0 15px var(--cyan))
+            drop-shadow(0 0 35px var(--pink));
+    }
+
+    75%{
+        transform:scale(.97) rotate(0);
+    }
+
+    100%{
+        opacity:1;
+        transform:scale(1);
+        filter:
+            blur(0)
+            brightness(1)
+            drop-shadow(0 0 12px var(--cyan))
+            drop-shadow(0 0 30px var(--pink));
+    }
+}
+
+.intro-text{
+    position:absolute;
+    bottom:12%;
+
+    font-size:11px;
+    letter-spacing:6px;
+    color:#777;
+
+    opacity:0;
+    animation:
+        introText 1s ease 2.5s forwards;
+}
+
+@keyframes introText{
+    to{
+        opacity:1;
+    }
+}
+
+/* =========================================
+   TOP RGB LINE
+========================================= */
+
+.rgb-line{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:3px;
+    z-index:9999;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--cyan),
+            var(--blue),
+            var(--purple),
+            var(--pink),
+            var(--cyan)
+        );
+
+    background-size:300% 100%;
+    animation:rgbMove 4s linear infinite;
+
+    box-shadow:
+        0 0 10px var(--cyan),
+        0 0 25px var(--pink);
+}
+
+@keyframes rgbMove{
+
+    from{
+        background-position:0%;
+    }
+
+    to{
+        background-position:300%;
+    }
+}
+
+/* =========================================
+   BACKGROUND
+========================================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-5;
+    pointer-events:none;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(0,247,255,.10),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 85% 30%,
+            rgba(255,0,212,.10),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 50% 90%,
+            rgba(139,0,255,.10),
+            transparent 35%
+        );
+}
+
+/* =========================================
+   NAVBAR
+========================================= */
+
+nav{
+    position:fixed;
+    top:3px;
+    left:0;
+
+    width:100%;
+    padding:18px 7%;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    background:rgba(0,0,0,.55);
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(255,255,255,.06);
+
+    z-index:9000;
+}
+
+.nav-logo{
+    font-weight:900;
+    letter-spacing:4px;
+    font-size:19px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--cyan),
+            var(--pink),
+            var(--purple)
+        );
+
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:30px;
+}
+
+nav a{
+    color:#ddd;
+    text-decoration:none;
+    font-size:13px;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:var(--cyan);
+    text-shadow:0 0 15px var(--cyan);
+}
+
+/* =========================================
+   SOUND BUTTON
+========================================= */
+
+#soundButton{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+
+    z-index:8000;
+
+    padding:12px 18px;
+
+    border:1px solid var(--cyan);
+    border-radius:5px;
+
+    background:rgba(0,0,0,.7);
+    color:white;
+
+    cursor:pointer;
+    font-weight:bold;
+    font-size:11px;
+    letter-spacing:2px;
+
+    box-shadow:
+        0 0 12px rgba(0,247,255,.3);
+
+    transition:.3s;
+}
+
+#soundButton:hover{
+    border-color:var(--pink);
+
+    box-shadow:
+        0 0 20px var(--pink);
+}
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:120px 20px 80px;
+
+    position:relative;
+}
+
+.hero-content{
+    max-width:1000px;
+}
+
+.hero-logo{
+    width:min(520px,80vw);
+    max-height:280px;
+    object-fit:contain;
+
+    filter:
+        drop-shadow(0 0 12px var(--cyan))
+        drop-shadow(0 0 30px var(--pink));
+
+    animation:
+        heroFloat 4s ease-in-out infinite,
+        rgbGlow 3s linear infinite;
+}
+
+@keyframes heroFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-14px);
+    }
+}
+
+@keyframes rgbGlow{
+
+    0%,100%{
+        filter:
+            drop-shadow(0 0 12px var(--cyan))
+            drop-shadow(0 0 30px var(--blue));
+    }
+
+    50%{
+        filter:
+            drop-shadow(0 0 12px var(--pink))
+            drop-shadow(0 0 35px var(--purple));
+    }
+}
+
+.hero h1{
+    margin-top:25px;
+
+    font-size:clamp(42px,8vw,90px);
+
+    letter-spacing:8px;
+    font-weight:1000;
+
+    text-shadow:
+        0 0 10px rgba(0,247,255,.5),
+        0 0 35px rgba(255,0,212,.4);
+}
+
+.hero p{
+    max-width:650px;
+
+    margin:20px auto 35px;
+
+    color:var(--muted);
+
+    font-size:17px;
+    line-height:1.7;
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.btn{
+    display:inline-block;
+
+    padding:14px 30px;
+    margin:7px;
+
+    color:white;
+    text-decoration:none;
+
+    font-weight:bold;
+
+    border:1px solid var(--cyan);
+    border-radius:5px;
+
+    background:rgba(0,247,255,.04);
+
+    transition:.3s;
+
+    box-shadow:
+        0 0 10px rgba(0,247,255,.25);
+}
+
+.btn:hover{
+    transform:translateY(-4px);
+
+    border-color:var(--pink);
+
+    box-shadow:
+        0 0 15px var(--pink),
+        0 0 35px rgba(255,0,212,.3);
+}
+
+.btn.primary{
+    border-color:var(--pink);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,0,212,.2),
+            rgba(139,0,255,.2)
+        );
+}
+
+/* =========================================
+   SECTIONS
+========================================= */
+
+section{
+    padding:110px 7%;
+    position:relative;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:55px;
+}
+
+.section-title span{
+    color:var(--cyan);
+
+    font-size:12px;
+    letter-spacing:4px;
+}
+
+.section-title h2{
+    margin-top:12px;
+
+    font-size:
+        clamp(32px,5vw,55px);
+}
+
+.section-title p{
+    color:var(--muted);
+    margin-top:15px;
+}
+
+/* =========================================
+   CINEMATIC SCROLL LOGO
+========================================= */
+
+.logo-reveal{
+    min-height:550px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+}
+
+.scroll-logo{
+    width:min(430px,75vw);
+
+    opacity:0;
+
+    transform:
+        translateY(180px)
+        scale(.45)
+        rotate(-10deg);
+
+    filter:
+        blur(20px)
+        brightness(.2);
+
+    transition:
+        opacity 1.5s ease,
+        transform 1.5s
+            cubic-bezier(.16,1,.3,1),
+        filter 1.5s ease;
+}
+
+.scroll-logo.show{
+    opacity:1;
+
+    transform:
+        translateY(0)
+        scale(1)
+        rotate(0);
+
+    filter:
+        blur(0)
+        brightness(1)
+
+        drop-shadow(0 0 15px var(--cyan))
+        drop-shadow(0 0 40px var(--pink));
+}
+
+/* =========================================
+   CARDS
+========================================= */
+
+.grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:25px;
+
+    max-width:1200px;
+
+    margin:auto;
+}
+
+.card{
+    position:relative;
+
+    padding:35px;
+
+    min-height:230px;
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    border-radius:14px;
+
+    background:
+        rgba(10,10,16,.72);
+
+    backdrop-filter:blur(12px);
+
+    overflow:hidden;
+
+    transition:.4s;
+}
+
+.card::before{
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    border-radius:50%;
+
+    top:-100px;
+    right:-80px;
+
+    background:var(--cyan);
+
+    filter:blur(80px);
+
+    opacity:.15;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+
+    border-color:var(--cyan);
+
+    box-shadow:
+        0 0 20px rgba(0,247,255,.15),
+        0 0 50px rgba(255,0,212,.08);
+}
+
+.card .icon{
+    font-size:40px;
+    margin-bottom:20px;
+}
+
+.card h3{
+    font-size:23px;
+    margin-bottom:12px;
+}
+
+.card p{
+    color:var(--muted);
+    line-height:1.7;
+}
+
+/* =========================================
+   ANIME VIDEO SECTION
+========================================= */
+
+.video-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:25px;
+
+    max-width:1300px;
+
+    margin:auto;
+}
+
+.video-card{
+    background:
+        rgba(8,8,13,.85);
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    transition:.4s;
+}
+
+.video-card:hover{
+    transform:translateY(-8px);
+
+    border-color:var(--pink);
+
+    box-shadow:
+        0 0 25px rgba(255,0,212,.15);
+}
+
+.video-card video{
+    width:100%;
+    display:block;
+
+    aspect-ratio:16/9;
+
+    object-fit:cover;
+
+    background:#000;
+}
+
+.video-info{
+    padding:20px;
+}
+
+.video-info h3{
+    margin-bottom:8px;
+}
+
+.video-info p{
+    color:var(--muted);
+    font-size:14px;
+}
+
+/* =========================================
+   FEATURE
+========================================= */
+
+.feature{
+    max-width:1200px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:40px;
+
+    align-items:center;
+}
+
+.feature-box{
+    min-height:350px;
+
+    border:
+        1px solid rgba(0,247,255,.2);
+
+    border-radius:15px;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,247,255,.05),
+            rgba(255,0,212,.05)
+        );
+}
+
+.feature-box video{
+    width:100%;
+    height:100%;
+
+    min-height:350px;
+
+    object-fit:cover;
+}
+
+.feature-text h2{
+    font-size:
+        clamp(30px,5vw,55px);
+
+    margin-bottom:20px;
+}
+
+.feature-text p{
+    color:var(--muted);
+
+    line-height:1.8;
+
+    margin-bottom:25px;
+}
+
+/* =========================================
+   STATS
+========================================= */
+
+.stats{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    max-width:1000px;
+
+    margin:auto;
+
+    gap:20px;
+}
+
+.stat{
+    text-align:center;
+
+    padding:30px 10px;
+
+    border-top:
+        1px solid rgba(255,255,255,.1);
+
+    border-bottom:
+        1px solid rgba(255,255,255,.1);
+}
+
+.stat strong{
+    display:block;
+
+    font-size:40px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--cyan),
+            var(--pink)
+        );
+
+    -webkit-background-clip:text;
+
+    color:transparent;
+}
+
+.stat span{
+    color:var(--muted);
+
+    font-size:13px;
+}
+
+/* =========================================
+   CTA
+========================================= */
+
+.cta{
+    text-align:center;
+
+    padding:130px 20px;
+}
+
+.cta h2{
+    font-size:
+        clamp(35px,7vw,75px);
+
+    margin-bottom:20px;
+}
+
+.cta p{
+    color:var(--muted);
+    margin-bottom:30px;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer{
+    text-align:center;
+
+    padding:35px 20px;
+
+    color:#666;
+
+    border-top:
+        1px solid rgba(255,255,255,.06);
+}
+
+footer strong{
+    color:white;
+}
+
+/* =========================================
+   PARTICLES
+========================================= */
+
+.particle{
+    position:fixed;
+
+    width:2px;
+    height:2px;
+
+    background:white;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    opacity:.5;
+
+    z-index:-1;
+
+    animation:
+        particleMove linear infinite;
+}
+
+@keyframes particleMove{
+
+    from{
+        transform:translateY(100vh);
+    }
+
+    to{
+        transform:translateY(-10vh);
+    }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:850px){
+
+    nav{
+        padding:16px 5%;
+    }
+
+    nav ul{
+        gap:14px;
+    }
+
+    nav a{
+        font-size:11px;
+    }
+
+    .grid,
+    .video-grid{
+        grid-template-columns:1fr;
+    }
+
+    .feature{
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    section{
+        padding:80px 5%;
+    }
+}
+
+@media(max-width:500px){
+
+    nav ul{
+        display:none;
+    }
+
+    .hero h1{
+        letter-spacing:4px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .stats{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    #soundButton{
+        right:15px;
+        bottom:15px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================================
+     CINEMATIC INTRO
+========================================= -->
+
+<div id="intro">
+
+    <div class="intro-glow"></div>
+
+    <img
+        src="assets/black-anime-logo.png"
+        class="intro-logo"
+        alt="BLACK ANIME"
+    >
+
+    <div class="intro-text">
+        ENTER THE DARK SIDE
+    </div>
+
+</div>
+
+
+<!-- RGB TOP LINE -->
+
+<div class="rgb-line"></div>
+
+
+<!-- =========================================
+     BACKGROUND MUSIC
+
+     Replace this with your own MP3.
+========================================= -->
+
+<audio id="bgMusic" loop preload="auto">
+
+    <source
+        src="assets/black-anime-theme.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+
+<!-- SOUND CONTROL -->
+
+<button id="soundButton">
+    🔇 SOUND OFF
+</button>
+
+
+<!-- =========================================
+     NAVIGATION
+========================================= -->
+
+<nav>
+
+    <div class="nav-logo">
+        BLACK ANIME
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="#home">HOME</a>
+        </li>
+
+        <li>
+            <a href="#anime">ANIME</a>
+        </li>
+
+        <li>
+            <a href="#featured">FEATURED</a>
+        </li>
+
+        <li>
+            <a href="#community">COMMUNITY</a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- =========================================
+     HERO
+========================================= -->
+
+<main id="home">
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <img
+            src="assets/black-anime-logo.png"
+            class="hero-logo"
+            alt="BLACK ANIME Logo"
+        >
+
+        <h1>
+            BLACK ANIME
+        </h1>
+
+        <p>
+            Enter the dark side of anime and gaming.
+            Discover characters, edits, cinematic videos,
+            gaming content and a community built for fans.
+        </p>
+
+        <a
+            href="#anime"
+            class="btn primary">
+            ENTER THE WORLD
+        </a>
+
+        <a
+            href="#featured"
+            class="btn">
+            EXPLORE
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     SCROLL CINEMATIC LOGO
+========================================= -->
+
+<section class="logo-reveal">
+
+    <img
+        src="assets/black-anime-logo.png"
+        class="scroll-logo"
+        id="scrollLogo"
+        alt="BLACK ANIME"
+    >
+
+</section>
+
+
+<!-- =========================================
+     ANIME
+========================================= -->
+
+<section id="anime">
+
+    <div class="section-title">
+
+        <span>
+            ANIME UNIVERSE
+        </span>
+
+        <h2>
+            ENTER THE DARK SIDE
+        </h2>
+
+        <p>
+            Watch anime edits, scenes and cinematic content.
+        </p>
+
+    </div>
+
+
+    <div class="video-grid">
+
+
+        <!-- VIDEO 1 -->
+
+        <div class="video-card">
+
+            <video
+                muted
+                loop
+                playsinline
+                preload="metadata">
+
+                <!--
+                REPLACE WITH YOUR MP4 URL
+
+                Example:
+                https://raw.githubusercontent.com/
+                YOURNAME/YOURREPO/main/videos/anime1.mp4
+                -->
+
+                <source
+                    src="videos/anime1.mp4"
+                    type="video/mp4">
+
+            </video>
+
+            <div class="video-info">
+
+                <h3>
+                    DARK AWAKENING
+                </h3>
+
+                <p>
+                    Anime cinematic edit.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- VIDEO 2 -->
+
+        <div class="video-card">
+
+            <video
+                muted
+                loop
+                playsinline
+                preload="metadata">
+
+                <source
+                    src="videos/anime2.mp4"
+                    type="video/mp4">
+
+            </video>
+
+            <div class="video-info">
+
+                <h3>
+                    POWER
+                </h3>
+
+                <p>
+                    Anime battle cinematic.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- VIDEO 3 -->
+
+        <div class="video-card">
+
+            <video
+                muted
+                loop
+                playsinline
+                preload="metadata">
+
+                <source
+                    src="videos/anime3.mp4"
+                    type="video/mp4">
+
+            </video>
+
+            <div class="video-info">
+
+                <h3>
+                    SHADOW
+                </h3>
+
+                <p>
+                    Dark anime edit.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     FEATURED VIDEO
+========================================= -->
+
+<section id="featured">
+
+    <div class="section-title">
+
+        <span>
+            FEATURED
+        </span>
+
+        <h2>
+            BLACK ANIME CINEMA
+        </h2>
+
+        <p>
+            Your main anime video can be featured here.
+        </p>
+
+    </div>
+
+
+    <div class="feature">
+
+
+        <div class="feature-box">
+
+            <video
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                controls>
+
+                <source
+                    src="videos/featured.mp4"
+                    type="video/mp4">
+
+            </video>
+
+        </div>
+
+
+        <div class="feature-text">
+
+            <h2>
+                ENTER THE<br>
+                ANIME ZONE
+            </h2>
+
+            <p>
+                Upload your best anime edits, cinematic
+                scenes and gaming videos here. The video
+                automatically plays silently when visible.
+            </p>
+
+            <a
+                href="#community"
+                class="btn primary">
+
+                JOIN THE WORLD
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     STATS
+========================================= -->
+
+<section>
+
+    <div class="stats">
+
+        <div class="stat">
+
+            <strong
+                data-count="100">
+                0
+            </strong>
+
+            <span>
+                ANIME MOMENTS
+            </span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <strong
+                data-count="24">
+                0
+            </strong>
+
+            <span>
+                GAMING ENERGY
+            </span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <strong>
+                ∞
+            </strong>
+
+            <span>
+                CREATIVITY
+            </span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <strong>
+                RGB
+            </strong>
+
+            <span>
+                DARK POWER
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     COMMUNITY
+========================================= -->
+
+<section id="community">
+
+    <div class="section-title">
+
+        <span>
+            CONNECT
+        </span>
+
+        <h2>
+            JOIN THE COMMUNITY
+        </h2>
+
+        <p>
+            Follow BLACK ANIME across your platforms.
+        </p>
+
+    </div>
+
+
+    <div class="grid">
+
+
+        <div class="card">
+
+            <div class="icon">
+                ▶️
+            </div>
+
+            <h3>
+                YouTube
+            </h3>
+
+            <p>
+                Anime edits, gaming videos and cinematic content.
+            </p>
+
+            <br>
+
+            <a
+                href="#"
+                class="btn">
+
+                OPEN
+
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">
+                💬
+            </div>
+
+            <h3>
+                Discord
+            </h3>
+
+            <p>
+                Build the BLACK ANIME community.
+            </p>
+
+            <br>
+
+            <a
+                href="#"
+                class="btn">
+
+                JOIN
+
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="icon">
+                📸
+            </div>
+
+            <h3>
+                Instagram
+            </h3>
+
+            <p>
+                Anime edits, artwork and announcements.
+            </p>
+
+            <br>
+
+            <a
+                href="#"
+                class="btn">
+
+                FOLLOW
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     FINAL CTA
+========================================= -->
+
+<section class="cta">
+
+    <h2>
+        WELCOME TO<br>
+        BLACK ANIME
+    </h2>
+
+    <p>
+        The darkness is only the beginning.
+    </p>
+
+    <a
+        href="#home"
+        class="btn primary">
+
+        BACK TO TOP ↑
+
+    </a>
+
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    © 2026
+    <strong>BLACK ANIME</strong>
+    — Anime • Gaming • Community
+
+</footer>
+
+
+<script>
+
+/* =========================================
+   CINEMATIC INTRO
+========================================= */
+
+const intro =
+    document.getElementById("intro");
+
+setTimeout(() => {
+
+    intro.classList.add("hide");
+
+}, 5000);
+
+
+/* =========================================
+   BACKGROUND MUSIC
+========================================= */
+
+const music =
+    document.getElementById("bgMusic");
+
+const soundButton =
+    document.getElementById("soundButton");
+
+let musicOn = false;
+
+
+soundButton.addEventListener(
+    "click",
+    () => {
+
+        if(musicOn){
+
+            music.pause();
+
+            musicOn = false;
+
+            soundButton.textContent =
+                "🔇 SOUND OFF";
+
+        }else{
+
+            music.volume = 0.25;
+
+            music.play()
+                .then(() => {
+
+                    musicOn = true;
+
+                    soundButton.textContent =
+                        "🔊 SOUND ON";
+
+                })
+                .catch(() => {
+
+                    soundButton.textContent =
+                        "⚠️ TAP AGAIN";
+
+                });
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   SCROLL LOGO REVEAL
+========================================= */
+
+const scrollLogo =
+    document.getElementById("scrollLogo");
+
+const logoObserver =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if(entry.isIntersecting){
+
+                    scrollLogo.classList.add("show");
+
+                }
+
+            });
+
+        },
+        {
+            threshold:.25
+        }
+    );
+
+logoObserver.observe(scrollLogo);
+
+
+/* =========================================
+   VIDEO AUTOPLAY ON SCROLL
+========================================= */
+
+const videos =
+    document.querySelectorAll("video");
+
+
+const videoObserver =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                const video =
+                    entry.target;
+
+                if(entry.isIntersecting){
+
+                    video.play()
+                        .catch(() => {});
+
+                }else{
+
+                    video.pause();
+
+                }
+
+            });
+
+        },
+        {
+            threshold:.35
+        }
+    );
+
+
+videos.forEach(video => {
+
+    videoObserver.observe(video);
+
+});
+
+
+/* =========================================
+   PARTICLES
+========================================= */
+
+const particleCount = 60;
+
+for(let i=0;i<particleCount;i++){
+
+    const particle =
+        document.createElement("div");
+
+    particle.className =
+        "particle";
+
+    particle.style.left =
+        Math.random()*100 + "%";
+
+    particle.style.animationDuration =
+        (5 + Math.random()*12) + "s";
+
+    particle.style.animationDelay =
+        Math.random()*8 + "s";
+
+    particle.style.opacity =
+        .2 + Math.random()*.7;
+
+    document.body.appendChild(
+        particle
+    );
+
+}
+
+
+/* =========================================
+   MOUSE RGB GLOW
+========================================= */
+
+document.addEventListener(
+    "mousemove",
+    event => {
+
+        const x =
+            (event.clientX /
+            window.innerWidth) * 100;
+
+        const y =
+            (event.clientY /
+            window.innerHeight) * 100;
+
+        document.body.style.background = `
+
+            radial-gradient(
+                circle at ${x}% ${y}%,
+                rgba(0,247,255,.035),
+                transparent 25%
+            ),
+
+            #020204
+        `;
+
+    }
+);
+
+
+/* =========================================
+   DYNAMIC COUNTERS
+========================================= */
+
+const counters =
+    document.querySelectorAll(
+        "[data-count]"
+    );
+
+const counterObserver =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if(
+                    entry.isIntersecting &&
+                    !entry.target.dataset.done
+                ){
+
+                    const target =
+                        Number(
+                            entry.target
+                            .dataset
+                            .count
+                        );
+
+                    let current = 0;
+
+                    const timer =
+                        setInterval(() => {
+
+                            current +=
+                                Math.ceil(
+                                    target / 40
+                                );
+
+                            if(
+                                current >= target
+                            ){
+
+                                current =
+                                    target;
+
+                                clearInterval(
+                                    timer
+                                );
+
+                            }
+
+                            entry.target
+                                .textContent =
+                                current + "+";
+
+                        },30);
+
+                    entry.target.dataset.done =
+                        "true";
+
+                }
+
+            });
+
+        }
+    );
+
+
+counters.forEach(counter => {
+
+    counterObserver.observe(counter);
+
+});
+
+
+/* =========================================
+   NAV ACTIVE EFFECT
+========================================= */
+
+document
+    .querySelectorAll("nav a")
+    .forEach(link => {
+
+        link.addEventListener(
+            "click",
+            function(){
+
+                document
+                    .querySelectorAll("nav a")
+                    .forEach(item => {
+
+                        item.style.textShadow =
+                            "";
+
+                    });
+
+                this.style.textShadow =
+                    "0 0 15px #00f7ff";
+
+            }
+        );
+
+    });
+
+</script>
+
+</body>
+</html>
