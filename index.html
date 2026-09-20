@@ -7,7 +7,7 @@
 <title>BLACK ANIME | Anime • Gaming • Community</title>
 
 <meta name="description"
-content="BLACK ANIME — Enter the dark side of anime and gaming.">
+content="BLACK ANIME — Enter the black anime world of anime and gaming.">
 
 <style>
 
@@ -292,43 +292,6 @@ nav a{
 nav a:hover{
     color:var(--cyan);
     text-shadow:0 0 15px var(--cyan);
-}
-
-/* =========================================
-   SOUND BUTTON
-========================================= */
-
-#soundButton{
-    position:fixed;
-    right:25px;
-    bottom:25px;
-
-    z-index:8000;
-
-    padding:12px 18px;
-
-    border:1px solid var(--cyan);
-    border-radius:5px;
-
-    background:rgba(0,0,0,.7);
-    color:white;
-
-    cursor:pointer;
-    font-weight:bold;
-    font-size:11px;
-    letter-spacing:2px;
-
-    box-shadow:
-        0 0 12px rgba(0,247,255,.3);
-
-    transition:.3s;
-}
-
-#soundButton:hover{
-    border-color:var(--pink);
-
-    box-shadow:
-        0 0 20px var(--pink);
 }
 
 /* =========================================
@@ -945,11 +908,6 @@ footer strong{
         grid-template-columns:
             repeat(2,1fr);
     }
-
-    #soundButton{
-        right:15px;
-        bottom:15px;
-    }
 }
 
 </style>
@@ -972,7 +930,7 @@ footer strong{
     >
 
     <div class="intro-text">
-        ENTER THE DARK SIDE
+        ENTER THE BLACK ANIME WORLD
     </div>
 
 </div>
@@ -984,12 +942,12 @@ footer strong{
 
 
 <!-- =========================================
-     BACKGROUND MUSIC
+     INTRO MUSIC
 
-     Replace this with your own MP3.
+     The audio plays once when the website starts.
 ========================================= -->
 
-<audio id="bgMusic" loop preload="auto">
+<audio id="bgMusic" preload="auto">
 
     <source
         src="assets/black-anime-theme.mp3"
@@ -1018,13 +976,6 @@ footer strong{
 </nav>
 
 
-<!-- SOUND BUTTON -->
-
-<button id="soundButton">
-    🔇 SOUND OFF
-</button>
-
-
 <main id="home">
 
 <!-- =========================================
@@ -1041,7 +992,7 @@ footer strong{
             alt="BLACK ANIME LOGO">
 
         <h1>
-            ENTER THE DARK SIDE
+            ENTER THE BLACK ANIME WORLD
         </h1>
 
         <p>
@@ -1147,7 +1098,7 @@ footer strong{
         </span>
 
         <h2>
-            ENTER THE DARK SIDE
+            ENTER THE BLACK ANIME WORLD
         </h2>
 
         <p>
@@ -1204,7 +1155,7 @@ footer strong{
                 controls>
 
                 <source
-                    src="videos/anime2.mp4"
+                    src="videos/edit2.mp4"
                     type="video/mp4">
 
             </video>
@@ -1212,11 +1163,11 @@ footer strong{
             <div class="video-info">
 
                 <h3>
-                    POWER
+                    POWER UNLEASHED
                 </h3>
 
                 <p>
-                    Anime battle cinematic.
+                    Anime power edit.
                 </p>
 
             </div>
@@ -1236,7 +1187,7 @@ footer strong{
                 controls>
 
                 <source
-                    src="videos/anime3.mp4"
+                    src="videos/edit3.mp4"
                     type="video/mp4">
 
             </video>
@@ -1244,11 +1195,11 @@ footer strong{
             <div class="video-info">
 
                 <h3>
-                    SHADOW
+                    BEYOND LIMITS
                 </h3>
 
                 <p>
-                    Dark anime edit.
+                    Cinematic anime edit.
                 </p>
 
             </div>
@@ -1261,30 +1212,12 @@ footer strong{
 
 
 <!-- =========================================
-     FEATURED VIDEO
+     FEATURED
 ========================================= -->
 
 <section id="featured">
 
-    <div class="section-title">
-
-        <span>
-            FEATURED
-        </span>
-
-        <h2>
-            BLACK ANIME CINEMA
-        </h2>
-
-        <p>
-            Your main anime video can be featured here.
-        </p>
-
-    </div>
-
-
     <div class="feature">
-
 
         <div class="feature-box">
 
@@ -1303,26 +1236,21 @@ footer strong{
 
         </div>
 
-
         <div class="feature-text">
 
             <h2>
-                ENTER THE<br>
-                ANIME ZONE
+                BUILT FROM SHADOWS.
+                POWERED BY ANIME.
             </h2>
 
             <p>
-                Upload your best anime edits, cinematic
-                scenes and gaming videos here. The video
-                automatically plays silently when visible.
+                Black Anime is a cinematic space for fans,
+                gamers and creators who want something more
+                intense, expressive and unforgettable.
             </p>
 
-            <a
-                href="#community"
-                class="btn primary">
-
-                JOIN THE WORLD
-
+            <a href="#community" class="btn primary">
+                ENTER THE COMMUNITY
             </a>
 
         </div>
@@ -1376,7 +1304,7 @@ footer strong{
     </h2>
 
     <p>
-        The dark side is waiting.
+        The black anime world is waiting.
     </p>
 
     <a href="mailto:contact@black-anime.net" class="btn primary">
@@ -1427,55 +1355,20 @@ setTimeout(() => {
 
 
 /* =========================================
-   BACKGROUND MUSIC
+   INTRO MUSIC
+
+   Play once at startup; do not loop and do not
+   expose a sound toggle button.
 ========================================= */
 
 const music =
     document.getElementById("bgMusic");
 
-const soundButton =
-    document.getElementById("soundButton");
+music.volume = 0.25;
 
-let musicOn = false;
-
-
-soundButton.addEventListener(
-    "click",
-    () => {
-
-        if(musicOn){
-
-            music.pause();
-
-            musicOn = false;
-
-            soundButton.textContent =
-                "🔇 SOUND OFF";
-
-        }else{
-
-            music.volume = 0.25;
-
-            music.play()
-                .then(() => {
-
-                    musicOn = true;
-
-                    soundButton.textContent =
-                        "🔊 SOUND ON";
-
-                })
-                .catch(() => {
-
-                    soundButton.textContent =
-                        "⚠️ TAP AGAIN";
-
-                });
-
-        }
-
-    }
-);
+music.play().catch(() => {
+    // Browsers may block autoplay until the visitor interacts.
+});
 
 
 /* =========================================
@@ -1573,57 +1466,19 @@ for(let i=0;i<particleCount;i++){
         (5 + Math.random()*12) + "s";
 
     particle.style.animationDelay =
-        Math.random()*8 + "s";
+        Math.random()*-15 + "s";
 
-    particle.style.opacity =
-        .2 + Math.random()*.7;
-
-    document.body.appendChild(
-        particle
-    );
+    document.body.appendChild(particle);
 
 }
 
 
 /* =========================================
-   MOUSE RGB GLOW
-========================================= */
-
-document.addEventListener(
-    "mousemove",
-    event => {
-
-        const x =
-            (event.clientX /
-            window.innerWidth) * 100;
-
-        const y =
-            (event.clientY /
-            window.innerHeight) * 100;
-
-        document.body.style.background = `
-
-            radial-gradient(
-                circle at ${x}% ${y}%,
-                rgba(0,247,255,.035),
-                transparent 25%
-            ),
-
-            #020204
-        `;
-
-    }
-);
-
-
-/* =========================================
-   DYNAMIC COUNTERS
+   COUNTERS
 ========================================= */
 
 const counters =
-    document.querySelectorAll(
-        "[data-count]"
-    );
+    document.querySelectorAll("[data-count]");
 
 const counterObserver =
     new IntersectionObserver(
@@ -1631,49 +1486,26 @@ const counterObserver =
 
             entries.forEach(entry => {
 
-                if(
-                    entry.isIntersecting &&
-                    !entry.target.dataset.done
-                ){
+                if(entry.isIntersecting){
 
-                    const target =
-                        Number(
-                            entry.target
-                            .dataset
-                            .count
-                        );
-
+                    const counter = entry.target;
+                    const target = +counter.dataset.count;
                     let current = 0;
+                    const step = Math.max(1, Math.ceil(target / 60));
 
-                    const timer =
-                        setInterval(() => {
+                    const updateCounter = () => {
 
-                            current +=
-                                Math.ceil(
-                                    target / 40
-                                );
+                        current = Math.min(current + step, target);
+                        counter.textContent = current + "+";
 
-                            if(
-                                current >= target
-                            ){
+                        if(current < target){
+                            requestAnimationFrame(updateCounter);
+                        }
 
-                                current =
-                                    target;
+                    };
 
-                                clearInterval(
-                                    timer
-                                );
-
-                            }
-
-                            entry.target
-                                .textContent =
-                                current + "+";
-
-                        },30);
-
-                    entry.target.dataset.done =
-                        "true";
+                    updateCounter();
+                    counterObserver.unobserve(counter);
 
                 }
 
@@ -1681,7 +1513,7 @@ const counterObserver =
 
         },
         {
-            threshold:.5
+            threshold:.7
         }
     );
 
