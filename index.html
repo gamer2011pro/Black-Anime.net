@@ -998,13 +998,6 @@ footer strong{
 </audio>
 
 
-<!-- SOUND CONTROL -->
-
-<button id="soundButton">
-    🔇 SOUND OFF
-</button>
-
-
 <!-- =========================================
      NAVIGATION
 ========================================= -->
@@ -1016,33 +1009,27 @@ footer strong{
     </div>
 
     <ul>
-
-        <li>
-            <a href="#home">HOME</a>
-        </li>
-
-        <li>
-            <a href="#anime">ANIME</a>
-        </li>
-
-        <li>
-            <a href="#featured">FEATURED</a>
-        </li>
-
-        <li>
-            <a href="#community">COMMUNITY</a>
-        </li>
-
+        <li><a href="#home">HOME</a></li>
+        <li><a href="#anime">ANIME</a></li>
+        <li><a href="#featured">FEATURED</a></li>
+        <li><a href="#community">COMMUNITY</a></li>
     </ul>
 
 </nav>
 
 
+<!-- SOUND BUTTON -->
+
+<button id="soundButton">
+    🔇 SOUND OFF
+</button>
+
+
+<main id="home">
+
 <!-- =========================================
      HERO
 ========================================= -->
-
-<main id="home">
 
 <section class="hero">
 
@@ -1051,29 +1038,23 @@ footer strong{
         <img
             src="assets/black-anime-logo.png"
             class="hero-logo"
-            alt="BLACK ANIME Logo"
-        >
+            alt="BLACK ANIME LOGO">
 
         <h1>
-            BLACK ANIME
+            ENTER THE DARK SIDE
         </h1>
 
         <p>
-            Enter the dark side of anime and gaming.
-            Discover characters, edits, cinematic videos,
-            gaming content and a community built for fans.
+            Anime edits, gaming energy and a community
+            built for people who live beyond the ordinary.
         </p>
 
-        <a
-            href="#anime"
-            class="btn primary">
-            ENTER THE WORLD
+        <a href="#anime" class="btn primary">
+            EXPLORE ANIME
         </a>
 
-        <a
-            href="#featured"
-            class="btn">
-            EXPLORE
+        <a href="#community" class="btn">
+            JOIN COMMUNITY
         </a>
 
     </div>
@@ -1082,17 +1063,73 @@ footer strong{
 
 
 <!-- =========================================
-     SCROLL CINEMATIC LOGO
+     LOGO REVEAL
 ========================================= -->
 
 <section class="logo-reveal">
 
     <img
+        id="scrollLogo"
         src="assets/black-anime-logo.png"
         class="scroll-logo"
-        id="scrollLogo"
-        alt="BLACK ANIME"
-    >
+        alt="BLACK ANIME">
+
+</section>
+
+
+<!-- =========================================
+     FEATURES
+========================================= -->
+
+<section>
+
+    <div class="section-title">
+
+        <span>
+            THE UNIVERSE
+        </span>
+
+        <h2>
+            BUILT FOR THE DIFFERENT
+        </h2>
+
+        <p>
+            A cinematic home for anime fans, gamers and creators.
+        </p>
+
+    </div>
+
+
+    <div class="grid">
+
+        <div class="card">
+            <div class="icon">⚡</div>
+            <h3>ANIME ENERGY</h3>
+            <p>
+                Discover edits, scenes and characters
+                that define the dark side of anime.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🎮</div>
+            <h3>GAMING MODE</h3>
+            <p>
+                Share gaming moments, highlights and
+                cinematic gameplay with the community.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🌌</div>
+            <h3>DARK COMMUNITY</h3>
+            <p>
+                Connect with people who understand
+                the passion behind every frame.
+            </p>
+        </div>
+
+    </div>
 
 </section>
 
@@ -1131,18 +1168,11 @@ footer strong{
                 muted
                 loop
                 playsinline
-                preload="metadata">
-
-                <!--
-                REPLACE WITH YOUR MP4 URL
-
-                Example:
-                https://raw.githubusercontent.com/
-                YOURNAME/YOURREPO/main/videos/anime1.mp4
-                -->
+                preload="metadata"
+                controls>
 
                 <source
-                    src="videos/anime1.mp4"
+                    src="videos/featured.mp4"
                     type="video/mp4">
 
             </video>
@@ -1170,7 +1200,8 @@ footer strong{
                 muted
                 loop
                 playsinline
-                preload="metadata">
+                preload="metadata"
+                controls>
 
                 <source
                     src="videos/anime2.mp4"
@@ -1201,7 +1232,8 @@ footer strong{
                 muted
                 loop
                 playsinline
-                preload="metadata">
+                preload="metadata"
+                controls>
 
                 <source
                     src="videos/anime3.mp4"
@@ -1309,56 +1341,23 @@ footer strong{
     <div class="stats">
 
         <div class="stat">
-
-            <strong
-                data-count="100">
-                0
-            </strong>
-
-            <span>
-                ANIME MOMENTS
-            </span>
-
+            <strong data-count="100">0+</strong>
+            <span>ANIME EDITS</span>
         </div>
 
-
         <div class="stat">
-
-            <strong
-                data-count="24">
-                0
-            </strong>
-
-            <span>
-                GAMING ENERGY
-            </span>
-
+            <strong data-count="50">0+</strong>
+            <span>CREATORS</span>
         </div>
 
-
         <div class="stat">
-
-            <strong>
-                ∞
-            </strong>
-
-            <span>
-                CREATIVITY
-            </span>
-
+            <strong data-count="24">0+</strong>
+            <span>HOURS OF ENERGY</span>
         </div>
 
-
         <div class="stat">
-
-            <strong>
-                RGB
-            </strong>
-
-            <span>
-                DARK POWER
-            </span>
-
+            <strong data-count="999">0+</strong>
+            <span>DARK VIBES</span>
         </div>
 
     </div>
@@ -1370,134 +1369,29 @@ footer strong{
      COMMUNITY
 ========================================= -->
 
-<section id="community">
+<section id="community" class="cta">
 
-    <div class="section-title">
+    <h2>
+        READY TO ENTER?
+    </h2>
 
-        <span>
-            CONNECT
-        </span>
+    <p>
+        The dark side is waiting.
+    </p>
 
-        <h2>
-            JOIN THE COMMUNITY
-        </h2>
-
-        <p>
-            Follow BLACK ANIME across your platforms.
-        </p>
-
-    </div>
-
-
-    <div class="grid">
-
-
-        <div class="card">
-
-            <div class="icon">
-                ▶️
-            </div>
-
-            <h3>
-                YouTube
-            </h3>
-
-            <p>
-                Anime edits, gaming videos and cinematic content.
-            </p>
-
-            <br>
-
-            <a
-                href="#"
-                class="btn">
-
-                OPEN
-
-            </a>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="icon">
-                💬
-            </div>
-
-            <h3>
-                Discord
-            </h3>
-
-            <p>
-                Build the BLACK ANIME community.
-            </p>
-
-            <br>
-
-            <a
-                href="#"
-                class="btn">
-
-                JOIN
-
-            </a>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="icon">
-                📸
-            </div>
-
-            <h3>
-                Instagram
-            </h3>
-
-            <p>
-                Anime edits, artwork and announcements.
-            </p>
-
-            <br>
-
-            <a
-                href="https://www.instagram.com/i_am_a_gamer_2011/"
-                class="btn">
-
-                FOLLOW
-
-            </a>
-
-        </div>
-
-    </div>
+    <a href="mailto:contact@black-anime.net" class="btn primary">
+        JOIN THE COMMUNITY
+    </a>
 
 </section>
 
 
-<!-- =========================================
-     FINAL CTA
-========================================= -->
+<!-- BACK TO TOP -->
 
-<section class="cta">
+<section style="text-align:center;padding-top:0;">
 
-    <h2>
-        WELCOME TO<br>
-        BLACK ANIME
-    </h2>
-
-    <p>
-        The darkness is only the beginning.
-    </p>
-
-    <a
-        href="#home"
-        class="btn primary">
-
+    <a href="#home" class="btn">
         BACK TO TOP ↑
-
     </a>
 
 </section>
@@ -1785,45 +1679,17 @@ const counterObserver =
 
             });
 
+        },
+        {
+            threshold:.5
         }
     );
-
 
 counters.forEach(counter => {
 
     counterObserver.observe(counter);
 
 });
-
-
-/* =========================================
-   NAV ACTIVE EFFECT
-========================================= */
-
-document
-    .querySelectorAll("nav a")
-    .forEach(link => {
-
-        link.addEventListener(
-            "click",
-            function(){
-
-                document
-                    .querySelectorAll("nav a")
-                    .forEach(item => {
-
-                        item.style.textShadow =
-                            "";
-
-                    });
-
-                this.style.textShadow =
-                    "0 0 15px #00f7ff";
-
-            }
-        );
-
-    });
 
 </script>
 
